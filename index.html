@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HERC GTH | Official Site</title>
+  <title>HERC GTH | Official Portal</title>
   <style>
     :root {
-      --gold: #dfb15b;
-      --gold-light: #fbe3ad;
-      --gold-dark: #997327;
-      --black: #050505;
-      --dark-card: #121214;
-      --border-gold: rgba(223, 177, 91, 0.35);
-      --glass-bg: rgba(20, 20, 24, 0.75);
+      --gold-primary: #f3ce72;
+      --gold-metallic: linear-gradient(135deg, #ffe89c 0%, #d4af37 50%, #997327 100%);
+      --bg-black: #060608;
+      --card-glass: rgba(18, 18, 22, 0.85);
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --text-gray: #b3b3b3;
     }
 
     * {
@@ -24,113 +23,112 @@
     }
 
     body {
-      background-color: var(--black);
+      background-color: var(--bg-black);
       color: #ffffff;
-      padding: 0;
-      margin: 0;
-      overflow-x: hidden;
       line-height: 1.5;
+      padding-bottom: 60px;
     }
 
-    /* Radial Glow Backdrop */
-    .bg-glow {
+    /* Ambient Background Glow */
+    .glow-overlay {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at 50% 20%, rgba(223, 177, 91, 0.15) 0%, rgba(5, 5, 5, 1) 70%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.25) 0%, rgba(6, 6, 8, 0.98) 65%);
       z-index: -1;
       pointer-events: none;
     }
 
-    .wrapper {
-      max-width: 650px;
+    .container {
+      max-width: 680px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 20px 16px;
+    }
+
+    /* ENHANCED PROMINENT GOLD CREST LOGO */
+    .hero-logo-box {
       text-align: center;
+      padding: 40px 0 15px;
     }
 
-    /* Built-in Custom SVG Crown & Crest Logo */
-    .crest-logo {
-      width: 180px;
+    .crest-svg {
+      width: 260px; /* Made bigger and more prominent */
       height: auto;
-      margin: 10px auto 15px;
-      display: block;
-      filter: drop-shadow(0px 0px 12px rgba(223, 177, 91, 0.4));
+      filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.6));
+      animation: pulseGlow 3.5s infinite alternate;
     }
 
-    h1 {
-      font-size: 2.4rem;
-      letter-spacing: 3px;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff 30%, var(--gold) 100%);
+    @keyframes pulseGlow {
+      0% { filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.5)); }
+      100% { filter: drop-shadow(0px 0px 40px rgba(255, 232, 156, 0.8)); }
+    }
+
+    /* Artist Identity Header */
+    .artist-title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-align: center;
+      background: var(--gold-metallic);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 4px;
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
-    .subtitle {
-      color: var(--gold);
+    .tagline {
+      text-align: center;
+      color: var(--gold-primary);
       font-size: 0.9rem;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 25px;
-    }
-
-    /* Gold Metallic Buttons */
-    .link-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 35px;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      background: linear-gradient(135deg, rgba(25,25,30,0.9), rgba(15,15,18,0.9));
-      border: 1px solid var(--border-gold);
-      color: #ffffff;
-      padding: 16px 20px;
-      border-radius: 12px;
-      text-decoration: none;
       font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      background: var(--card-glass);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .stat-lbl {
+      font-size: 0.7rem;
+      color: var(--gold-primary);
       text-transform: uppercase;
-      transition: all 0.2s ease-in-out;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-      color: #000000;
-      border: none;
-      box-shadow: 0 4px 20px rgba(223, 177, 91, 0.3);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-      border-color: var(--gold);
+      letter-spacing: 1px;
     }
 
     /* Section Headers */
     .section-title {
-      font-size: 1.2rem;
-      color: var(--gold);
+      font-size: 1.1rem;
+      color: var(--gold-primary);
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin: 35px 0 15px;
+      margin: 35px 0 16px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-weight: 800;
     }
 
     .section-title::after {
@@ -140,228 +138,322 @@
       background: linear-gradient(90deg, var(--border-gold), transparent);
     }
 
-    /* Discography Cards with Interactive Audio Previews */
-    .card {
-      background: var(--dark-card);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 14px;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
+    /* PLATFORM LINK CARDS WITH USERNAMES */
+    .links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .card::before {
+    .platform-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-glass);
+      border: 1px solid var(--border-gold);
+      padding: 18px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .platform-card:active {
+      transform: scale(0.98);
+      background: rgba(212, 175, 55, 0.15);
+    }
+
+    .platform-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .platform-icon {
+      width: 28px;
+      height: 28px;
+      fill: var(--gold-primary);
+    }
+
+    .platform-name {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    .platform-handle {
+      font-size: 0.82rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      display: block;
+    }
+
+    .action-arrow {
+      color: var(--gold-primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Featured Button (Spotify Gold) */
+    .platform-card.featured {
+      background: var(--gold-metallic);
+      color: #000000;
+      border: none;
+    }
+
+    .platform-card.featured .platform-icon,
+    .platform-card.featured .platform-handle,
+    .platform-card.featured .action-arrow {
+      color: #000000;
+      fill: #000000;
+    }
+
+    /* Discography Grid Cards */
+    .music-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .music-card {
+      background: var(--card-glass);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+      position: relative;
+    }
+
+    .music-card::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
+      width: 3px;
       height: 100%;
-      background: var(--gold);
+      background: var(--gold-primary);
+      border-radius: 12px 0 0 12px;
     }
 
-    .card h3 {
-      font-size: 1.1rem;
+    .music-card h3 {
+      font-size: 0.95rem;
       color: #ffffff;
       margin-bottom: 2px;
     }
 
-    .card .meta {
-      font-size: 0.8rem;
-      color: var(--gold);
+    .music-card .meta {
+      font-size: 0.75rem;
+      color: var(--gold-primary);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    .card p {
-      font-size: 0.88rem;
-      color: #b0b0b0;
-      margin-bottom: 12px;
+    .music-card p {
+      font-size: 0.8rem;
+      color: var(--text-gray);
     }
 
-    /* Audio Player Styling */
-    audio {
-      width: 100%;
-      height: 36px;
-      border-radius: 8px;
-      outline: none;
-      filter: invert(0.9) hue-rotate(180deg);
-    }
-
-    /* About Section */
+    /* Bio Box */
     .bio-card {
-      background: var(--glass-bg);
+      background: var(--card-glass);
       border: 1px solid var(--border-gold);
-      padding: 22px;
+      padding: 20px;
       border-radius: 14px;
-      color: #d0d0d0;
-      font-size: 0.95rem;
+      color: var(--text-gray);
+      font-size: 0.9rem;
       line-height: 1.7;
       text-align: left;
     }
 
     .bio-card strong {
-      color: var(--gold-light);
-    }
-
-    /* Tour/Events Section */
-    .event-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--dark-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    .event-date {
-      color: var(--gold);
-      font-weight: bold;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-    }
-
-    .event-city {
-      font-size: 0.95rem;
       color: #ffffff;
-      font-weight: 600;
-    }
-
-    .event-venue {
-      font-size: 0.8rem;
-      color: #888888;
     }
 
     /* Footer */
     footer {
+      text-align: center;
       margin-top: 50px;
-      padding-bottom: 30px;
-      color: #777777;
+      color: #666666;
       font-size: 0.8rem;
     }
 
     footer span {
-      color: var(--gold);
+      color: var(--gold-primary);
       display: block;
-      margin-top: 5px;
+      margin-top: 4px;
       font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-glow"></div>
+  <div class="glow-overlay"></div>
 
-  <div class="wrapper">
+  <div class="container">
     
-    <!-- Built-in Pure Vector Crest & Crown Logo -->
-    <svg class="crest-logo" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#fbe3ad" />
-          <stop offset="50%" stop-color="#dfb15b" />
-          <stop offset="100%" stop-color="#997327" />
-        </linearGradient>
-      </defs>
-      
-      <!-- Crown -->
-      <path d="M 90 100 L 110 130 L 150 90 L 190 130 L 210 100 L 200 150 L 100 150 Z" fill="url(#goldGrad)" />
-      <circle cx="90" cy="95" r="6" fill="url(#goldGrad)" />
-      <circle cx="150" cy="85" r="7" fill="url(#goldGrad)" />
-      <circle cx="210" cy="95" r="6" fill="url(#goldGrad)" />
-      <rect x="105" y="155" width="90" height="10" rx="3" fill="url(#goldGrad)" />
+    <!-- HIGH-IMPACT SVG GOLD CREST LOGO -->
+    <div class="hero-logo-box">
+      <svg class="crest-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gold3D" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffe89c" />
+            <stop offset="50%" stop-color="#d4af37" />
+            <stop offset="100%" stop-color="#7a5813" />
+          </linearGradient>
+        </defs>
 
-      <!-- Monogram Moniker -->
-      <text x="150" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="34" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="4">G.T.H.</text>
+        <!-- Crown Jewels & Arch -->
+        <path d="M 70 100 L 100 135 L 150 85 L 200 135 L 230 100 L 210 165 L 90 165 Z" fill="url(#gold3D)" />
+        <circle cx="70" cy="95" r="8" fill="url(#gold3D)" />
+        <circle cx="150" cy="78" r="10" fill="url(#gold3D)" />
+        <circle cx="230" cy="95" r="8" fill="url(#gold3D)" />
+        <rect x="95" y="170" width="110" height="14" rx="4" fill="url(#gold3D)" />
 
-      <!-- Laurel Leaves Frame -->
-      <path d="M 60 160 C 50 220 100 260 150 265 C 200 260 250 220 240 160" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round" />
-      <path d="M 50 170 Q 40 160 55 150 Q 65 165 50 170 Z" fill="url(#goldGrad)" />
-      <path d="M 55 200 Q 40 190 60 180 Q 70 195 55 200 Z" fill="url(#goldGrad)" />
-      <path d="M 250 170 Q 260 160 245 150 Q 235 165 250 170 Z" fill="url(#goldGrad)" />
-      <path d="M 245 200 Q 260 190 240 180 Q 230 195 245 200 Z" fill="url(#goldGrad)" />
-    </svg>
+        <!-- Center Monogram -->
+        <text x="150" y="222" font-family="-apple-system, sans-serif" font-weight="900" font-size="38" fill="url(#gold3D)" text-anchor="middle" letter-spacing="4">G.T.H.</text>
 
-    <h1>HERC GTH</h1>
-    <div class="subtitle">God • Truth • Health | King of Garland</div>
-
-    <!-- Verified Working Direct Links -->
-    <div class="link-grid">
-      <a href="https://open.spotify.com/search/HERC%20GTH" target="_blank" class="btn btn-gold">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.66.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-.1.2-1.02-.36-.6-.18-.42-.78-.24-1.2 4.2-1.26 11.28-1.02 15.72 1.62.54.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Listen on Spotify
-      </a>
-
-      <a href="https://music.apple.com/us/search?term=HERC%20GTH" target="_blank" class="btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.36-.58.68-1.09 1.76-.95 2.8.99.08 2.03-.52 2.67-1.31z"/></svg>
-        Apple Music Profile
-      </a>
-
-      <a href="https://soundcloud.com/herchunter4" target="_blank" class="btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.05 0-.1.025-.125.075l-.975 4.1c-.025.075 0 .15.075.175l.975.25c.075 0 .15-.05.175-.125l.95-4.3c0-.075-.05-.15-.125-.175l-.95-.025zm2.15-1.525c-.05 0-.1.05-.125.125l-1.325 5.85c0 .075.05.15.125.15l1.175.3c.075 0 .15-.05.15-.125l1.325-6.025c0-.075-.05-.15-.125-.15l-1.2-.125zm2.325-1.275c-.075 0-.125.05-.15.125l-1.575 7.375c0 .075.05.15.125.15l1.375.35c.075 0 .15-.05.15-.125l1.6-7.55c0-.075-.05-.15-.125-.15l-1.4-.175zm2.475-1.075c-.075 0-.125.05-.15.125l-1.8 8.775c0 .075.05.15.125.15l1.575.4c.075 0 .15-.05.175-.125l1.825-8.975c0-.075-.05-.15-.125-.15l-1.625-.2zm13.125 3.025c-.625 0-1.225.15-1.75.425-.325-2.825-2.725-5.025-5.65-5.025-1.275 0-2.45.425-3.4 1.15-.1.075-.125.175-.125.275l.125 9.425c0 .1.075.175.175.175h10.45c1.9 0 3.425-1.525 3.425-3.425 0-1.875-1.525-3.425-3.425-3.425z"/></svg>
-        SoundCloud Stream
-      </a>
-
-      <a href="https://www.youtube.com/@HERCGTH" target="_blank" class="btn">
-        YouTube Channel
-      </a>
-
-      <a href="https://www.instagram.com/hercgth" target="_blank" class="btn">
-        Instagram (@hercgth)
-      </a>
-
-      <a href="https://www.facebook.com/HERCGTH" target="_blank" class="btn">
-        Official Facebook
-      </a>
+        <!-- Laurel Wreath -->
+        <path d="M 45 165 C 35 235 95 280 150 285 C 205 280 265 235 255 165" fill="none" stroke="url(#gold3D)" stroke-width="6" stroke-linecap="round" />
+        <path d="M 38 175 Q 25 165 44 153 Q 54 170 38 175 Z" fill="url(#gold3D)" />
+        <path d="M 44 207 Q 28 195 50 185 Q 60 202 44 207 Z" fill="url(#gold3D)" />
+        <path d="M 262 175 Q 275 165 256 153 Q 246 170 262 175 Z" fill="url(#gold3D)" />
+        <path d="M 256 207 Q 272 195 250 185 Q 240 202 256 207 Z" fill="url(#gold3D)" />
+      </svg>
     </div>
 
-    <!-- Music Player & Releases -->
-    <div class="section-title">Music & Releases</div>
+    <!-- Artist Title -->
+    <h1 class="artist-title">HERC GTH</h1>
+    <div class="tagline">God • Truth • Health | King of Garland</div>
 
-    <div class="card">
-      <h3>HERCStojakavic (2026)</h3>
-      <div class="meta">Latest Headline Single</div>
-      <p>Stream the brand-new 2026 release across all platforms.</p>
-    </div>
-
-    <div class="card">
-      <h3>NOVI Presents: A Surreal Moment In Time Too (2025)</h3>
-      <div class="meta">Collaborative EP</div>
-      <p>High-intensity joint project showcasing storytelling and heavy beats.</p>
-    </div>
-
-    <div class="card">
-      <h3>The Manifestation</h3>
-      <div class="meta">Album Project</div>
-      <p>Featuring key releases like "Moving on Up" and "Caliente".</p>
-    </div>
-
-    <!-- Upcoming Events / Live Shows -->
-    <div class="section-title">Live Shows & Appearance</div>
-
-    <div class="event-item">
-      <div>
-        <div class="event-date">Garland, TX</div>
-        <div class="event-city">The Tiny Stage Performance</div>
-        <div class="event-venue">Live Hometown Showcase</div>
+    <!-- Key Metrics Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-val">Artist</div>
+        <div class="stat-lbl">Spotify</div>
       </div>
-      <a href="https://www.youtube.com/@HERCGTH" target="_blank" class="btn btn-gold" style="padding: 8px 14px; font-size: 0.75rem; width: auto;">Watch</a>
+      <div class="stat-item">
+        <div class="stat-val">@hercgth</div>
+        <div class="stat-lbl">Instagram</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">Garland, TX</div>
+        <div class="stat-lbl">Hometown</div>
+      </div>
     </div>
 
-    <!-- Biography & Movement -->
-    <div class="section-title">The GTH Movement</div>
+    <!-- DIRECT STREAMING & SOCIAL LINKS WITH USERNAMES -->
+    <div class="section-title">Official Music & Platforms</div>
+    <div class="links-stack">
 
+      <!-- SPOTIFY DIRECT APP LINK -->
+      <a href="https://open.spotify.com/artist/5GqVjKjW3209aG2oGvDk0z" target="_blank" class="platform-card featured">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.66.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-.1.2-1.02-.36-.6-.18-.42-.78-.24-1.2 4.2-1.26 11.28-1.02 15.72 1.62.54.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          <div>
+            <span class="platform-name">Spotify</span>
+            <span class="platform-handle">Artist Page: HERC GTH</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+      <!-- APPLE MUSIC DIRECT LINK -->
+      <a href="https://music.apple.com/us/artist/herc-gth/1528246068" target="_blank" class="platform-card">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.36-.58.68-1.09 1.76-.95 2.8.99.08 2.03-.52 2.67-1.31z"/></svg>
+          <div>
+            <span class="platform-name">Apple Music</span>
+            <span class="platform-handle">Artist Page: HERC GTH</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+      <!-- INSTAGRAM DIRECT LINK -->
+      <a href="https://www.instagram.com/hercgth" target="_blank" class="platform-card">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <div>
+            <span class="platform-name">Instagram</span>
+            <span class="platform-handle">Username: @hercgth</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+      <!-- YOUTUBE DIRECT LINK -->
+      <a href="https://www.youtube.com/@HERCGTH" target="_blank" class="platform-card">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <div>
+            <span class="platform-name">YouTube</span>
+            <span class="platform-handle">Handle: @HERCGTH</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+      <!-- SOUNDCLOUD DIRECT LINK -->
+      <a href="https://soundcloud.com/herchunter4" target="_blank" class="platform-card">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.1.025-.125.075l-.975 4.1c-.025.075 0 .15.075.175l.975.25c.075 0 .15-.05.175-.125l.95-4.3c0-.075-.05-.15-.125-.175l-.95-.025zm2.15-1.525c-.05 0-.1.05-.125.125l-1.325 5.85c0 .075.05.15.125.15l1.175.3c.075 0 .15-.05.15-.125l1.325-6.025c0-.075-.05-.15-.125-.15l-1.2-.125zm2.325-1.275c-.075 0-.125.05-.15.125l-1.575 7.375c0 .075.05.15.125.15l1.375.35c.075 0 .15-.05.15-.125l1.6-7.55c0-.075-.05-.15-.125-.15l-1.4-.175zm2.475-1.075c-.075 0-.125.05-.15.125l-1.8 8.775c0 .075.05.15.125.15l1.575.4c.075 0 .15-.05.175-.125l1.825-8.975c0-.075-.05-.15-.125-.15l-1.625-.2zm13.125 3.025c-.625 0-1.225.15-1.75.425-.325-2.825-2.725-5.025-5.65-5.025-1.275 0-2.45.425-3.4 1.15-.1.075-.125.175-.125.275l.125 9.425c0 .1.075.175.175.175h10.45c1.9 0 3.425-1.525 3.425-3.425 0-1.875-1.525-3.425-3.425-3.425z"/></svg>
+          <div>
+            <span class="platform-name">SoundCloud</span>
+            <span class="platform-handle">Profile: herchunter4</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+      <!-- FACEBOOK DIRECT LINK -->
+      <a href="https://www.facebook.com/HERCGTH" target="_blank" class="platform-card">
+        <div class="platform-left">
+          <svg class="platform-icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <div>
+            <span class="platform-name">Facebook</span>
+            <span class="platform-handle">Page: @HERCGTH</span>
+          </div>
+        </div>
+        <span class="action-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- Catalog Showcase -->
+    <div class="section-title">Discography</div>
+    <div class="music-grid">
+      <div class="music-card">
+        <div class="meta">2026 Single</div>
+        <h3>HERCStojakavic</h3>
+        <p>Major Headline Release</p>
+      </div>
+      <div class="music-card">
+        <div class="meta">2025 EP</div>
+        <h3>A Surreal Moment In Time Too</h3>
+        <p>Collab EP w/ Novi</p>
+      </div>
+      <div class="music-card">
+        <div class="meta">2021 Project</div>
+        <h3>HERCSpeare</h3>
+        <p>Feat. "Oowee"</p>
+      </div>
+      <div class="music-card">
+        <div class="meta">2020 Project</div>
+        <h3>The Manifestation</h3>
+        <p>Feat. "Moving on Up"</p>
+      </div>
+    </div>
+
+    <!-- Biography & Brand -->
+    <div class="section-title">About HERC GTH</div>
     <div class="bio-card">
-      <p><strong>HERC GTH</strong> is an independent hip-hop artist, entrepreneur, and community leader from Garland, Texas, known widely as <strong>"The King of Garland."</strong>[span_0](start_span)[span_0](end_span)</p>
+      <p><strong>HERC GTH</strong> is an independent hip-hop artist, entrepreneur, and community leader from Garland, Texas, widely recognized as <strong>"The King of Garland."</strong>[span_0](start_span)[span_0](end_span)</p>
       <br>
-      <p>The acronym <strong>GTH</strong> stands for <strong>God, Truth, Health</strong>—a lifestyle movement focused on spiritual, mental, and physical progression through music, calisthenics, and active community outreach[span_1](start_span)[span_1](end_span).</p>
+      <p>The acronym <strong>GTH</strong> stands for <strong>God, Truth, Health</strong>—a lifestyle movement centered on spiritual, mental, and physical progression[span_1](start_span)[span_1](end_span).</p>
     </div>
 
     <!-- Footer -->
