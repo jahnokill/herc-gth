@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HERC GTH | Official</title>
+  <title>HERC GTH | Official Vault</title>
   <style>
     :root {
-      --gold: #dfb15b;
-      --gold-bright: #fff0a8;
-      --black: #0a0a0a;
-      --dark-grey: #141414;
-      --mid-grey: #222222;
-      --text-main: #ededed;
-      --text-dim: #999999;
+      --gold: #e5b85c;
+      --gold-glow: #ffdf85;
+      --black: #08080a;
+      --card-bg: #121216;
+      --card-border: #262630;
+      --text: #f0f0f5;
+      --text-dim: #8a8a9e;
     }
 
     * {
@@ -24,362 +24,435 @@
 
     body {
       background-color: var(--black);
-      color: var(--text-main);
-      padding: 0;
-      margin: 0;
+      color: var(--text);
+      overflow-x: hidden;
       line-height: 1.4;
+      padding-bottom: 50px;
     }
 
-    /* Asymmetric Top Banner */
-    .top-bar {
+    /* Live Marquee Ticker Bar */
+    .ticker-wrap {
+      width: 100%;
       background: var(--gold);
       color: #000;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 6px 0;
       font-size: 0.75rem;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 8px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    }
+
+    .ticker-move {
+      display: inline-block;
+      animation: ticker 18s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     .container {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 20px 16px;
     }
 
-    /* BRAND NEW GEOMETRIC CROWN + GTH LOGO */
-    .brand-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 40px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--mid-grey);
-    }
-
-    .custom-logo {
-      width: 100%;
-      max-width: 320px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    .artist-name {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      line-height: 0.9;
-      color: #fff;
+    /* BRAND NEW AGGRESSIVE CROWN & CREST LOGO */
+    .logo-box {
       text-align: center;
+      padding: 20px 0 10px;
     }
 
-    .artist-subtitle {
-      color: var(--gold);
-      font-size: 0.85rem;
+    .custom-crest {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      filter: drop-shadow(0px 0px 18px rgba(229, 184, 92, 0.4));
+    }
+
+    .artist-title {
+      font-size: 2.8rem;
+      font-weight: 900;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-top: 10px;
-      font-weight: 700;
       text-align: center;
-    }
-
-    /* Hero Headline Box */
-    .hero-spotlight {
-      background: var(--dark-grey);
-      border: 1px solid var(--gold);
-      padding: 24px;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    .hero-tag {
-      position: absolute;
-      top: -12px;
-      left: 20px;
-      background: var(--gold);
-      color: #000;
-      font-size: 0.65rem;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      padding: 3px 8px;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #fff;
+      background: linear-gradient(180deg, #ffffff 40%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-top: 5px;
     }
 
-    .hero-desc {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      margin-top: 8px;
+    .artist-tag {
+      text-align: center;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 35px;
     }
 
-    /* Section Headings */
+    /* Section Label Divider */
     .section-label {
       font-size: 0.8rem;
       color: var(--gold);
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 800;
-      margin-bottom: 15px;
+      margin: 35px 0 15px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .section-label::after {
       content: "";
       flex: 1;
       height: 1px;
-      background: var(--mid-grey);
+      background: linear-gradient(90deg, var(--card-border), transparent);
     }
 
-    /* Music Releases Grid */
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 480px) {
-      .catalog-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .release-card {
-      background: var(--dark-grey);
-      border: 1px solid var(--mid-grey);
-      padding: 18px;
-      transition: border-color 0.2s ease;
-    }
-
-    .release-card:hover {
-      border-color: var(--gold);
-    }
-
-    .release-year {
-      font-size: 0.7rem;
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .release-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 4px 0;
-      text-transform: uppercase;
-    }
-
-    .release-sub {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-
-    /* Bio Box */
-    .bio-block {
-      background: var(--dark-grey);
-      border-left: 3px solid var(--gold);
+    /* FEATURE 1: INTERACTIVE AUDIO DECK */
+    .audio-deck {
+      background: var(--card-bg);
+      border: 1px solid var(--gold);
+      border-radius: 14px;
       padding: 20px;
-      margin-bottom: 40px;
-      font-size: 0.95rem;
-      color: #ccc;
-      line-height: 1.6;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
-    .bio-block strong {
-      color: #fff;
-    }
-
-    /* RELOCATED DIRECTORY STREAMING HUB (FOOTER SECTION) */
-    .directory-box {
-      background: #0f0f0f;
-      border: 1px solid var(--mid-grey);
-      padding: 24px;
-    }
-
-    .directory-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .directory-item {
+    .deck-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px;
-      background: var(--dark-grey);
-      border: 1px solid transparent;
+      margin-bottom: 12px;
+    }
+
+    .now-playing {
+      font-size: 0.7rem;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .eq-bar-group {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 14px;
+    }
+
+    .eq-bar {
+      width: 3px;
+      background: var(--gold);
+      height: 100%;
+      animation: eqBounce 0.8s infinite alternate ease-in-out;
+    }
+
+    .eq-bar:nth-child(2) { animation-delay: 0.2s; }
+    .eq-bar:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes eqBounce {
+      0% { height: 20%; }
+      100% { height: 100%; }
+    }
+
+    .track-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .track-meta {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 15px;
+    }
+
+    audio {
+      width: 100%;
+      height: 38px;
+      outline: none;
+      filter: invert(0.9) hue-rotate(170deg);
+    }
+
+    /* FEATURE 2: PILLARS INTERACTIVE ACCORDION */
+    .pillar-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--gold);
+    }
+
+    .pillar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .pillar-head span {
+      color: var(--gold);
+    }
+
+    .pillar-body {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* FEATURE 3: DISCOGRAPHY GRID */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .release-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    .release-badge {
+      font-size: 0.65rem;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .release-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 4px 0;
+    }
+
+    .release-desc {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* SOCIAL DIRECTORY (NO SPOTIFY/APPLE MUSIC) */
+    .directory-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dir-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 14px 18px;
+      border-radius: 10px;
       text-decoration: none;
       color: #fff;
       transition: all 0.2s ease;
     }
 
-    .directory-item:hover {
+    .dir-link:hover {
       border-color: var(--gold);
-      background: #1a1a1a;
+      background: #181820;
     }
 
-    .platform-title {
-      font-size: 0.9rem;
+    .dir-name {
       font-weight: 800;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      display: block;
     }
 
-    .platform-handle-tag {
-      font-size: 0.75rem;
+    .dir-handle {
+      font-size: 0.78rem;
       color: var(--gold);
       font-weight: 600;
+      display: block;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 30px 0 10px;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      border-top: 1px solid var(--mid-grey);
       margin-top: 40px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    footer span {
+      color: var(--gold);
+      display: block;
+      margin-top: 4px;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <span>HERC GTH</span>
-    <span>GARLAND, TX</span>
+  <!-- Live Marquee Banner -->
+  <div class="ticker-wrap">
+    <div class="ticker-move">
+      HERC GTH • OFFICIAL VAULT • "KING OF GARLAND" • NEW MUSIC INCOMING • GOD • TRUTH • HEALTH • HERC GTH • OFFICIAL VAULT •
+    </div>
   </div>
 
   <div class="container">
 
-    <!-- BOLD HUMAN-STYLED EMBLEM & CROWN LOGO -->
-    <div class="brand-header">
-      <svg class="custom-logo" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Angular Street Crown -->
-        <path d="M 120 70 L 145 30 L 200 60 L 255 30 L 280 70 L 260 90 L 140 90 Z" fill="#dfb15b" />
-        <circle cx="145" cy="22" r="5" fill="#fff0a8" />
-        <circle cx="200" cy="50" r="6" fill="#fff0a8" />
-        <circle cx="255" cy="22" r="5" fill="#fff0a8" />
-        <!-- Sharp Block Typography GTH -->
-        <text x="200" y="130" font-family="-apple-system, sans-serif" font-weight="900" font-size="42" fill="#ffffff" text-anchor="middle" letter-spacing="6">GTH</text>
-        <!-- King Banner Sub-text -->
-        <text x="200" y="152" font-family="-apple-system, sans-serif" font-weight="800" font-size="11" fill="#dfb15b" text-anchor="middle" letter-spacing="4">KING OF GARLAND</text>
+    <!-- NEW AGGRESSIVE CROWN & GTH CREST LOGO -->
+    <div class="logo-box">
+      <svg class="custom-crest" viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffdf85" />
+            <stop offset="50%" stop-color="#e5b85c" />
+            <stop offset="100%" stop-color="#8a6314" />
+          </linearGradient>
+        </defs>
+
+        <!-- Sharp 5-Point Crown -->
+        <path d="M 60 65 L 85 20 L 125 50 L 160 15 L 195 50 L 235 20 L 260 65 L 230 80 L 90 80 Z" fill="url(#goldGrad)" />
+        <circle cx="85" cy="14" r="4" fill="#ffffff" />
+        <circle cx="160" cy="8" r="5" fill="#ffffff" />
+        <circle cx="235" cy="14" r="4" fill="#ffffff" />
+        
+        <!-- Center Geometric GTH Monogram -->
+        <text x="160" y="122" font-family="-apple-system, sans-serif" font-weight="900" font-size="40" fill="#ffffff" text-anchor="middle" letter-spacing="6">GTH</text>
+        
+        <!-- King Banner Subtitle -->
+        <text x="160" y="145" font-family="-apple-system, sans-serif" font-weight="800" font-size="10" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="4">KING OF GARLAND</text>
       </svg>
 
-      <h1 class="artist-name">HERC GTH</h1>
-      <div class="artist-subtitle">God • Truth • Health</div>
+      <h1 class="artist-title">HERC GTH</h1>
+      <div class="artist-tag">God • Truth • Health</div>
     </div>
 
-    <!-- Spotlight Feature -->
-    <div class="hero-spotlight">
-      <div class="hero-tag">Current Headline Release</div>
-      <div class="hero-title">HERCStojakavic (2026)</div>
-      <div class="hero-desc">The newest official single from HERC GTH. Stream across all major music networks below.</div>
+    <!-- FEATURE 1: INTERACTIVE AUDIO DECK PLAYER -->
+    <div class="section-label">Audio Vault Preview</div>
+    <div class="audio-deck">
+      <div class="deck-header">
+        <div class="now-playing">Now Playing: Featured Track</div>
+        <div class="eq-bar-group">
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+        </div>
+      </div>
+      <div class="track-title">HERCStojakavic (2026)</div>
+      <div class="track-meta">Headline Single • HERC GTH</div>
+      <audio controls>
+        <!-- Replace src with direct MP3 file link if available -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
 
-    <!-- Discography -->
-    <div class="section-label">Discography & Projects</div>
+    <!-- FEATURE 2: DISCOGRAPHY GRID -->
+    <div class="section-label">Discography Showcase</div>
     <div class="catalog-grid">
       <div class="release-card">
-        <div class="release-year">2026 SINGLE</div>
+        <div class="release-badge">2026 Single</div>
         <div class="release-name">HERCStojakavic</div>
-        <div class="release-sub">Headline Single</div>
+        <div class="release-desc">Latest major single release.</div>
       </div>
       <div class="release-card">
-        <div class="release-year">2025 COLLAB EP</div>
-        <div class="release-name">A Surreal Moment In Time Too</div>
-        <div class="release-sub">Joint EP with NOVI</div>
+        <div class="release-badge">2025 Joint EP</div>
+        <div class="release-name">A Surreal Moment...</div>
+        <div class="release-desc">Collaborative project w/ NOVI.</div>
       </div>
       <div class="release-card">
-        <div class="release-year">2021 PROJECT</div>
+        <div class="release-badge">Project</div>
         <div class="release-name">HERCSpeare</div>
-        <div class="release-sub">Includes "Oowee"</div>
+        <div class="release-desc">Featuring "Oowee".</div>
       </div>
       <div class="release-card">
-        <div class="release-year">2020 ALBUM</div>
+        <div class="release-badge">Album</div>
         <div class="release-name">The Manifestation</div>
-        <div class="release-sub">Includes "Moving on Up"</div>
+        <div class="release-desc">Featuring "Moving on Up".</div>
       </div>
     </div>
 
-    <!-- Artist Bio -->
-    <div class="section-label">Movement & Background</div>
-    <div class="bio-block">
-      <p><strong>HERC GTH</strong> is an independent hip-hop artist, entrepreneur, and community builder based in Garland, Texas[span_0](start_span)[span_0](end_span). Recognized regionally as <strong>"The King of Garland,"</strong> his movement—<strong>GTH (God, Truth, Health)</strong>—focuses on physical strength, mental clarity, and spiritual progress through music and action[span_1](start_span)[span_1](end_span).</p>
+    <!-- FEATURE 3: THE PILLARS (INTERACTIVE ACCORDION) -->
+    <div class="section-label">The GTH Pillars</div>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-head">G — GOD <span>01</span></div>
+        <div class="pillar-body">Spiritual foundation anchoring faith, purpose, and guidance through every movement
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-head">T — TRUTH <span>02</span></div>
+        <div class="pillar-body">Unfiltered authenticity in music, community action, and raw storytelling
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-head">H — HEALTH <span>03</span></div>
+        <div class="pillar-body">Physical strength and mental wellness through calisthenics and active lifestyle progression
+      </div>
     </div>
 
-    <!-- RELOCATED DIRECTORY STREAMING HUB (FOOTER PLATFORMS & HANDLES) -->
-    <div class="directory-box">
-      <div class="section-label" style="margin-bottom: 5px;">Official Platforms & Music Handles</div>
-      <p style="font-size: 0.8rem; color: var(--text-dim);">Direct artist handles and streaming profiles:</p>
+    <!-- SOCIAL & PLATFORM DIRECTORY (EXCLUDING SPOTIFY/APPLE MUSIC) -->
+    <div class="section-label">Official Social & Channel Hub</div>
+    <div class="directory-stack">
+      <a href="https://soundcloud.com/herchunter4" target="_blank" class="dir-link">
+        <div>
+          <span class="dir-name">SoundCloud</span>
+          <span class="dir-handle">Profile: herchunter4</span>
+        </div>
+        <span style="color:var(--gold);">Visit ↗</span>
+      </a>
 
-      <div class="directory-list">
-        <!-- Spotify Profile -->
-        <a href="https://open.spotify.com/artist/5GqVjKjW3209aG2oGvDk0z" target="_blank" class="directory-item">
-          <div>
-            <div class="platform-title">Spotify</div>
-            <div class="platform-handle-tag">Artist Profile: HERC GTH</div>
-          </div>
-          <span style="color:var(--gold);">Open ↗</span>
-        </a>
+      <a href="https://www.instagram.com/hercgth" target="_blank" class="dir-link">
+        <div>
+          <span class="dir-name">Instagram</span>
+          <span class="dir-handle">Handle: @hercgth</span>
+        </div>
+        <span style="color:var(--gold);">Visit ↗</span>
+      </a>
 
-        <!-- Apple Music Profile -->
-        <a href="https://music.apple.com/us/artist/herc-gth/1528246068" target="_blank" class="directory-item">
-          <div>
-            <div class="platform-title">Apple Music</div>
-            <div class="platform-handle-tag">Artist Profile: HERC GTH</div>
-          </div>
-          <span style="color:var(--gold);">Open ↗</span>
-        </a>
+      <a href="https://www.youtube.com/@HERCGTH" target="_blank" class="dir-link">
+        <div>
+          <span class="dir-name">YouTube</span>
+          <span class="dir-handle">Channel: @HERCGTH</span>
+        </div>
+        <span style="color:var(--gold);">Visit ↗</span>
+      </a>
 
-        <!-- SoundCloud -->
-        <a href="https://soundcloud.com/herchunter4" target="_blank" class="directory-item">
-          <div>
-            <div class="platform-title">SoundCloud</div>
-            <div class="platform-handle-tag">Username: herchunter4</div>
-          </div>
-          <span style="color:var(--gold);">Open ↗</span>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/hercgth" target="_blank" class="directory-item">
-          <div>
-            <div class="platform-title">Instagram</div>
-            <div class="platform-handle-tag">Handle: @hercgth</div>
-          </div>
-          <span style="color:var(--gold);">Open ↗</span>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/@HERCGTH" target="_blank" class="directory-item">
-          <div>
-            <div class="platform-title">YouTube</div>
-            <div class="platform-handle-tag">Channel: @HERCGTH</div>
-          </div>
-          <span style="color:var(--gold);">Open ↗</span>
-        </a>
-      </div>
+      <a href="https://www.facebook.com/HERCGTH" target="_blank" class="dir-link">
+        <div>
+          <span class="dir-name">Facebook</span>
+          <span class="dir-handle">Page: @HERCGTH</span>
+        </div>
+        <span style="color:var(--gold);">Visit ↗</span>
+      </a>
     </div>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2026 HERC GTH. All Rights Reserved.[span_2](start_span)[span_2](end_span)</p>
-      <p style="margin-top: 5px; color: var(--gold);">"Grind, Trap, Hustle 'til We Get To Heaven[span_3](start_span)"[span_3](end_span)</p>
+      <p>&copy; 2026 HERC GTH. All Rights Reserved.
+      <span>"Grind, Trap, Hustle 'til We Get To Heaven"
     </footer>
 
   </div>
